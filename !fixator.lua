@@ -66,7 +66,7 @@ function musora_detector()
     for k, v in pairs(getAllChars()) do
       if doesCharExist(v) then
         f = getCharModel(v)
-        if not skins[f] then
+        if skins[f] then
           math.randomseed(os.time())
           if math.random(1,2) == 1 then
             musora = true
