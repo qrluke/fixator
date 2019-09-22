@@ -2,7 +2,7 @@ script_name('fixator')
 script_version("22.09.2019")
 script_author("qrlk")
 script_url("https://github.com/qrlk/fixator")
-script_description("Р’РѕСЃРїСЂРѕРёР·РІРѕРґРёС‚ Р·РІСѓРє, РєРѕРіРґР° РІ Р·РѕРЅРµ РїСЂРѕСЂРёСЃРѕРІРєРё РїРѕСЏРІР»СЏСЋС‚СЃСЏ РёРіСЂРѕРєРё СЃРѕ СЃРєРёРЅР°РјРё РёР· СЃРїРёСЃРєР°.")
+script_description("Воспроизводит звук, когда в зоне прорисовки появляются игроки со скинами из списка.")
 
 local as_action = require('moonloader').audiostream_state
 local sampev = require 'lib.samp.events'
@@ -17,10 +17,10 @@ function main()
   if not isSampLoaded() or not isSampfuncsLoaded() then return end
   while not isSampAvailable() do wait(100) end
 
-  --РІС‹СЂРµР·Р°С‚СЊ РµСЃР»Рё С…РѕС‡РµС€СЊ РѕС‚РєР»СЋС‡РёС‚СЊ Р°РІС‚РѕРѕР±РЅРѕРІР»РµРЅРёРµ
+  --вырезать если хочешь отключить автообновление
   update("http://qrlk.me/dev/moonloader/fixator/stats.php", '['..string.upper(thisScript().name)..']: ', "http://vk.com/qrlk.mods", "fixatorchangelog")
   openchangelog("fixatorchangelog", "http://qrlk.me/changelog/fixator")
-  --РІС‹СЂРµР·Р°С‚СЊ РµСЃР»Рё С…РѕС‡РµС€СЊ РѕС‚РєР»СЋС‡РёС‚СЊ Р°РІС‚РѕРѕР±РЅРѕРІР»РµРЅРёРµ
+  --вырезать если хочешь отключить автообновление
 
   if not doesDirectoryExist(getGameDirectory().."\\moonloader\\resource") then
     createDirectory(getGameDirectory().."\\moonloader\\resource")
@@ -155,23 +155,23 @@ function update(php, prefix, url, komanda)
               lua_thread.create(function(prefix, komanda)
                 local dlstatus = require('moonloader').download_status
                 local color = -1
-                sampAddChatMessage((prefix..'РћР±РЅР°СЂСѓР¶РµРЅРѕ РѕР±РЅРѕРІР»РµРЅРёРµ. РџС‹С‚Р°СЋСЃСЊ РѕР±РЅРѕРІРёС‚СЊСЃСЏ c '..thisScript().version..' РЅР° '..updateversion), color)
+                sampAddChatMessage((prefix..'Обнаружено обновление. Пытаюсь обновиться c '..thisScript().version..' на '..updateversion), color)
                 wait(250)
                 downloadUrlToFile(updatelink, thisScript().path,
                   function(id3, status1, p13, p23)
                     if status1 == dlstatus.STATUS_DOWNLOADINGDATA then
-                      print(string.format('Р—Р°РіСЂСѓР¶РµРЅРѕ %d РёР· %d.', p13, p23))
+                      print(string.format('Загружено %d из %d.', p13, p23))
                     elseif status1 == dlstatus.STATUS_ENDDOWNLOADDATA then
-                      print('Р—Р°РіСЂСѓР·РєР° РѕР±РЅРѕРІР»РµРЅРёСЏ Р·Р°РІРµСЂС€РµРЅР°.')
+                      print('Загрузка обновления завершена.')
                       if komandaA ~= nil then
-                        sampAddChatMessage((prefix..'РћР±РЅРѕРІР»РµРЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ! РџРѕРґСЂРѕР±РЅРµРµ РѕР± РѕР±РЅРѕРІР»РµРЅРёРё - /'..komandaA..'.'), color)
+                        sampAddChatMessage((prefix..'Обновление завершено! Подробнее об обновлении - /'..komandaA..'.'), color)
                       end
                       goupdatestatus = true
                       lua_thread.create(function() wait(500) thisScript():reload() end)
                     end
                     if status1 == dlstatus.STATUSEX_ENDDOWNLOAD then
                       if goupdatestatus == nil then
-                        sampAddChatMessage((prefix..'РћР±РЅРѕРІР»РµРЅРёРµ РїСЂРѕС€Р»Рѕ РЅРµСѓРґР°С‡РЅРѕ. Р—Р°РїСѓСЃРєР°СЋ СѓСЃС‚Р°СЂРµРІС€СѓСЋ РІРµСЂСЃРёСЋ..'), color)
+                        sampAddChatMessage((prefix..'Обновление прошло неудачно. Запускаю устаревшую версию..'), color)
                         update = false
                       end
                     end
@@ -181,11 +181,11 @@ function update(php, prefix, url, komanda)
               )
             else
               update = false
-              print('v'..thisScript().version..': РћР±РЅРѕРІР»РµРЅРёРµ РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ.')
+              print('v'..thisScript().version..': Обновление не требуется.')
             end
           end
         else
-          print('v'..thisScript().version..': РќРµ РјРѕРіСѓ РїСЂРѕРІРµСЂРёС‚СЊ РѕР±РЅРѕРІР»РµРЅРёРµ. РЎРјРёСЂРёС‚РµСЃСЊ РёР»Рё РїСЂРѕРІРµСЂСЊС‚Рµ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅРѕ РЅР° '..url)
+          print('v'..thisScript().version..': Не могу проверить обновление. Смиритесь или проверьте самостоятельно на '..url)
           update = false
         end
       end
@@ -202,7 +202,7 @@ function openchangelog(komanda, url)
           if changelogurl == nil then
             changelogurl = url
           end
-          sampShowDialog(222228, "{ff0000}РРЅС„РѕСЂРјР°С†РёСЏ РѕР± РѕР±РЅРѕРІР»РµРЅРёРё", "{ffffff}"..thisScript().name.." {ffe600}СЃРѕР±РёСЂР°РµС‚СЃСЏ РѕС‚РєСЂС‹С‚СЊ СЃРІРѕР№ changelog РґР»СЏ РІР°СЃ.\nР•СЃР»Рё РІС‹ РЅР°Р¶РјРµС‚Рµ {ffffff}РћС‚РєСЂС‹С‚СЊ{ffe600}, СЃРєСЂРёРїС‚ РїРѕРїС‹С‚Р°РµС‚СЃСЏ РѕС‚РєСЂС‹С‚СЊ СЃСЃС‹Р»РєСѓ:\n        {ffffff}"..changelogurl.."\n{ffe600}Р•СЃР»Рё РІР°С€Р° РёРіСЂР° РєСЂР°С€РЅРµС‚СЃСЏ, РІС‹ РјРѕР¶РµС‚Рµ РѕС‚РєСЂС‹С‚СЊ СЌС‚Сѓ СЃСЃС‹Р»РєСѓ СЃР°РјРё.", "РћС‚РєСЂС‹С‚СЊ", "РћС‚РјРµРЅРёС‚СЊ")
+          sampShowDialog(222228, "{ff0000}Информация об обновлении", "{ffffff}"..thisScript().name.." {ffe600}собирается открыть свой changelog для вас.\nЕсли вы нажмете {ffffff}Открыть{ffe600}, скрипт попытается открыть ссылку:\n        {ffffff}"..changelogurl.."\n{ffe600}Если ваша игра крашнется, вы можете открыть эту ссылку сами.", "Открыть", "Отменить")
           while sampIsDialogActive() do wait(100) end
           local result, button, list, input = sampHasDialogRespond(222228)
           if button == 1 then
