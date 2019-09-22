@@ -27,12 +27,12 @@ function main()
   end
   file = getGameDirectory().."\\moonloader\\resource\\musora1.mp3"
   if not doesFileExist(file) then
-    downloadUrlToFile("http://qrlk.me/dev/moonloader/!edith/musora.mp3", file)
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora.mp3", file)
   end
 
   file1 = getGameDirectory().."\\moonloader\\resource\\musora2.mp3"
   if not doesFileExist(file1) then
-    downloadUrlToFile("http://qrlk.me/dev/moonloader/!edith/obideli.mp3", file1)
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/obideli.mp3", file1)
   end
 
   lua_thread.create(musora_detector)
@@ -66,7 +66,8 @@ function musora_detector()
     for k, v in pairs(getAllChars()) do
       if doesCharExist(v) then
         f = getCharModel(v)
-        if skins[f] then
+        if not skins[f] then
+          math.randomseed(os.time())
           if math.random(1,2) == 1 then
             musora = true
           else
