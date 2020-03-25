@@ -1,5 +1,5 @@
 script_name('fixator')
-script_version("22.09.2019")
+script_version("25.03.2020")
 script_author("qrlk")
 script_url("https://github.com/qrlk/fixator")
 script_description("Воспроизводит звук, когда в зоне прорисовки появляются игроки со скинами из списка.")
@@ -66,7 +66,7 @@ function musora_detector()
     for k, v in pairs(getAllChars()) do
       if doesCharExist(v) then
         f = getCharModel(v)
-        if skins[f] then
+        if skins[f] and sampGetPlayerIdByCharHandle(v) then
           math.randomseed(os.time())
           if math.random(1,2) == 1 then
             musora = true
