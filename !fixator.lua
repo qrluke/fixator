@@ -1,5 +1,5 @@
 script_name('fixator')
-script_version("25.03.2020")
+script_version("30.03.2020")
 script_author("qrlk")
 script_url("https://github.com/qrlk/fixator")
 script_description("Воспроизводит звук, когда в зоне прорисовки появляются игроки со скинами из списка.")
@@ -9,9 +9,22 @@ local sampev = require 'lib.samp.events'
 
 sound = false
 sound1 = false
+sound3 = false
+sound4 = false
+sound5 = false
+sound6 = false
+sound7 = false
+sound8 = false
+
 
 musora = false
 obideli = false
+sound33 = false
+sound44 = false
+sound55 = false
+sound66 = false
+sound77 = false
+sound88 = false
 
 function main()
   if not isSampLoaded() or not isSampfuncsLoaded() then return end
@@ -34,12 +47,49 @@ function main()
   if not doesFileExist(file1) then
     downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/obideli.mp3", file1)
   end
+  
+  file3 = getGameDirectory().."\\moonloader\\resource\\musora3.mp3"
+  if not doesFileExist(file3) then
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora3.mp3", file)
+  end
 
+  file4 = getGameDirectory().."\\moonloader\\resource\\musora4.mp3"
+  if not doesFileExist(file4) then
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora4.mp3", file)
+  end
+  
+  file5 = getGameDirectory().."\\moonloader\\resource\\musora5.ogg"
+  if not doesFileExist(file5) then
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora5.ogg", file)
+  end
+    
+  file6 = getGameDirectory().."\\moonloader\\resource\\musora6.ogg"
+  if not doesFileExist(file6) then
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora6.ogg", file)
+  end
+    
+  file7 = getGameDirectory().."\\moonloader\\resource\\musora7.ogg"
+  if not doesFileExist(file7) then
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora7.ogg", file)
+  end
+  
+    
+  file8 = getGameDirectory().."\\moonloader\\resource\\musora8.ogg"
+  if not doesFileExist(file8) then
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora8.ogg", file)
+  end
+  
   lua_thread.create(musora_detector)
   lua_thread.create(musora_handle)
 
   a1 = loadAudioStream(file)
   a2 = loadAudioStream(file1)
+  a3 = loadAudioStream(file3)
+  a4 = loadAudioStream(file4)
+  a5 = loadAudioStream(file5)
+  a6 = loadAudioStream(file6)
+  a7 = loadAudioStream(file7)
+  a8 = loadAudioStream(file8)
 
   while true do
     wait(0)
@@ -55,6 +105,42 @@ function main()
       end
       sound1 = false
     end
+	if sound3 then
+      if getAudioStreamState(a3) ~= as_action.PLAY then
+        setAudioStreamState(a3, as_action.PLAY)
+      end
+      sound3 = false
+    end
+	if sound4 then
+      if getAudioStreamState(a4) ~= as_action.PLAY then
+        setAudioStreamState(a4, as_action.PLAY)
+      end
+      sound4 = false
+    end
+	if sound5 then
+      if getAudioStreamState(a5) ~= as_action.PLAY then
+        setAudioStreamState(a5, as_action.PLAY)
+      end
+      sound5 = false
+    end
+	if sound6 then
+      if getAudioStreamState(a6) ~= as_action.PLAY then
+        setAudioStreamState(a6, as_action.PLAY)
+      end
+      sound6 = false
+    end
+	if sound7 then
+      if getAudioStreamState(a7) ~= as_action.PLAY then
+        setAudioStreamState(a7, as_action.PLAY)
+      end
+      sound7 = false
+    end
+	if sound8 then
+      if getAudioStreamState(a8) ~= as_action.PLAY then
+        setAudioStreamState(a8, as_action.PLAY)
+      end
+      sound8 = false
+    end
   end
 end
 
@@ -68,10 +154,23 @@ function musora_detector()
         f = getCharModel(v)
         if skins[f] and sampGetPlayerIdByCharHandle(v) then
           math.randomseed(os.time())
-          if math.random(1,2) == 1 then
+		  ran = math.random(1,8)
+          if ran == 1 then
             musora = true
-          else
-            obideli = true
+          elseif ran == 2 then
+            obideli = true		
+          elseif ran == 3 then
+            sound33 = true		
+          elseif ran == 4 then
+            sound44 = true		
+          elseif ran == 5 then
+            sound55 = true			
+          elseif ran == 6 then
+            sound66 = true			
+          elseif ran == 7 then
+            sound77 = true
+          elseif ran == 8 then
+            sound88 = true
           end
           detected = true
           break
@@ -81,6 +180,12 @@ function musora_detector()
     if not detected then
       musora = false
       obideli = false
+	  sound33 = false
+	sound44 = false
+	sound55 = false
+	sound66 = false
+	sound77 = false
+	sound88 = false
     end
   end
 end
@@ -96,6 +201,36 @@ function musora_handle()
     if obideli then
       sound1 = true
       while obideli do wait(1000) end
+      wait(2000)
+    end
+	if sound33 then
+      sound3 = true
+      while sound33 do wait(1000) end
+      wait(2000)
+    end
+	if sound44 then
+      sound4 = true
+      while sound44 do wait(1000) end
+      wait(2000)
+    end
+    if sound55 then
+      sound5 = true
+      while sound55 do wait(1000) end
+      wait(2000)
+    end
+	if sound66 then
+      sound6 = true
+      while sound66 do wait(1000) end
+      wait(2000)
+    end
+	if sound77 then
+      sound7 = true
+      while sound77 do wait(1000) end
+      wait(2000)
+    end
+	if sound88 then
+      sound8 = true
+      while sound88 do wait(1000) end
       wait(2000)
     end
   end
