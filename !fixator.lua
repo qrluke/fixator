@@ -1,5 +1,5 @@
 script_name('fixator')
-script_version("30.03.2020")
+script_version("31.03.2020")
 script_author("qrlk")
 script_url("https://github.com/qrlk/fixator")
 script_description("Воспроизводит звук, когда в зоне прорисовки появляются игроки со скинами из списка.")
@@ -50,33 +50,33 @@ function main()
   
   file3 = getGameDirectory().."\\moonloader\\resource\\musora3.mp3"
   if not doesFileExist(file3) then
-    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora3.mp3", file)
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora3.mp3", file3)
   end
 
   file4 = getGameDirectory().."\\moonloader\\resource\\musora4.mp3"
   if not doesFileExist(file4) then
-    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora4.mp3", file)
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora4.mp3", file4)
   end
   
   file5 = getGameDirectory().."\\moonloader\\resource\\musora5.ogg"
   if not doesFileExist(file5) then
-    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora5.ogg", file)
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora5.ogg", file5)
   end
     
   file6 = getGameDirectory().."\\moonloader\\resource\\musora6.ogg"
   if not doesFileExist(file6) then
-    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora6.ogg", file)
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora6.ogg", file6)
   end
     
   file7 = getGameDirectory().."\\moonloader\\resource\\musora7.ogg"
   if not doesFileExist(file7) then
-    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora7.ogg", file)
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora7.ogg", file7)
   end
   
     
   file8 = getGameDirectory().."\\moonloader\\resource\\musora8.ogg"
   if not doesFileExist(file8) then
-    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora8.ogg", file)
+    downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora8.ogg", file8)
   end
   
   lua_thread.create(musora_detector)
