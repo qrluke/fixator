@@ -12,7 +12,7 @@
 
 <img src="https://img.shields.io/badge/dynamic/json?color=blueviolet&label=users%20%28all%20time%29&query=result&url=http%3A%2F%2Fqrlk.me%2Fdev%2Fmoonloader%2Fusers_all.php%3Fscript%3Dfixator">
 
-<img src="https://img.shields.io/badge/moonloader-v.026.5--beta-blue" >
+<img src="https://img.shields.io/date/1569186000?label=released" >
 
 </p>
 
@@ -28,3 +28,11 @@ It also requires **[CLEO 4+](http://cleo.li/?lang=ru)** and **[SAMPFUNCS 5+](htt
 
 **Требования:** [CLEO 4+](http://cleo.li/?lang=ru), [SAMPFUNCS 5+](https://blast.hk/threads/17/), [MoonLoader](https://blast.hk/threads/13305/).  
 **Активация:** Скрипт активируется автоматически.
+
+## Ссылки
+* [Автор](http://qrlk.me/)
+* [Авторский обзор](https://www.youtube.com/watch?v=BZ6b5eruic0)
+* [Тема на BlastHack](https://www.blast.hk/threads/42064/)
+* [Список скриптов QRLK MODS](https://vk.com/qrlk.mods?w=page-168860334_54271482)
+
+P.S. Группа VK не обновляется.
