@@ -22,7 +22,9 @@ It also requires **[CLEO 4+](http://cleo.li/?lang=ru)** and **[SAMPFUNCS 5+](htt
 
 ---
 **The following description is in Russian, because it is the main language of the user base**.
-
+<details>
+  <summary>Описание на русском языке.</summary>
+  
 # Описание 
 **FIXATOR** ищет силовиков в зоне прорисовке и, если находит, воспроизводит рандомный звук вроде песни "Кто такие мусора? Опа, зигота" или "Fuck the police". Для работы звука нужно включить радио. Можно настроить свой звук, подменив файлы.
 
@@ -36,3 +38,4 @@ It also requires **[CLEO 4+](http://cleo.li/?lang=ru)** and **[SAMPFUNCS 5+](htt
 * [Список скриптов QRLK MODS](https://vk.com/qrlk.mods?w=page-168860334_54271482)
 
 P.S. Группа VK не обновляется.
+</details>
