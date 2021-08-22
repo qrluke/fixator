@@ -1,3 +1,5 @@
+require 'lib.moonloader'
+
 script_name('fixator')
 script_version("31.03.2020")
 script_author("qrlk")
