@@ -49,7 +49,7 @@ function main()
   if not doesFileExist(file1) then
     downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/obideli.mp3", file1)
   end
-  
+
   file3 = getGameDirectory().."\\moonloader\\resource\\musora3.mp3"
   if not doesFileExist(file3) then
     downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora3.mp3", file3)
@@ -59,28 +59,28 @@ function main()
   if not doesFileExist(file4) then
     downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora4.mp3", file4)
   end
-  
+
   file5 = getGameDirectory().."\\moonloader\\resource\\musora5.ogg"
   if not doesFileExist(file5) then
     downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora5.ogg", file5)
   end
-    
+
   file6 = getGameDirectory().."\\moonloader\\resource\\musora6.ogg"
   if not doesFileExist(file6) then
     downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora6.ogg", file6)
   end
-    
+
   file7 = getGameDirectory().."\\moonloader\\resource\\musora7.ogg"
   if not doesFileExist(file7) then
     downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora7.ogg", file7)
   end
-  
-    
+
+
   file8 = getGameDirectory().."\\moonloader\\resource\\musora8.ogg"
   if not doesFileExist(file8) then
     downloadUrlToFile("https://github.com/qrlk/fixator/raw/master/resource/musora8.ogg", file8)
   end
-  
+
   lua_thread.create(musora_detector)
   lua_thread.create(musora_handle)
 
@@ -107,37 +107,37 @@ function main()
       end
       sound1 = false
     end
-	if sound3 then
+    if sound3 then
       if getAudioStreamState(a3) ~= as_action.PLAY then
         setAudioStreamState(a3, as_action.PLAY)
       end
       sound3 = false
     end
-	if sound4 then
+    if sound4 then
       if getAudioStreamState(a4) ~= as_action.PLAY then
         setAudioStreamState(a4, as_action.PLAY)
       end
       sound4 = false
     end
-	if sound5 then
+    if sound5 then
       if getAudioStreamState(a5) ~= as_action.PLAY then
         setAudioStreamState(a5, as_action.PLAY)
       end
       sound5 = false
     end
-	if sound6 then
+    if sound6 then
       if getAudioStreamState(a6) ~= as_action.PLAY then
         setAudioStreamState(a6, as_action.PLAY)
       end
       sound6 = false
     end
-	if sound7 then
+    if sound7 then
       if getAudioStreamState(a7) ~= as_action.PLAY then
         setAudioStreamState(a7, as_action.PLAY)
       end
       sound7 = false
     end
-	if sound8 then
+    if sound8 then
       if getAudioStreamState(a8) ~= as_action.PLAY then
         setAudioStreamState(a8, as_action.PLAY)
       end
@@ -156,19 +156,19 @@ function musora_detector()
         f = getCharModel(v)
         if skins[f] and sampGetPlayerIdByCharHandle(v) then
           math.randomseed(os.time())
-		  ran = math.random(1,8)
+          ran = math.random(1, 8)
           if ran == 1 then
             musora = true
           elseif ran == 2 then
-            obideli = true		
+            obideli = true
           elseif ran == 3 then
-            sound33 = true		
+            sound33 = true
           elseif ran == 4 then
-            sound44 = true		
+            sound44 = true
           elseif ran == 5 then
-            sound55 = true			
+            sound55 = true
           elseif ran == 6 then
-            sound66 = true			
+            sound66 = true
           elseif ran == 7 then
             sound77 = true
           elseif ran == 8 then
@@ -182,12 +182,12 @@ function musora_detector()
     if not detected then
       musora = false
       obideli = false
-	  sound33 = false
-	sound44 = false
-	sound55 = false
-	sound66 = false
-	sound77 = false
-	sound88 = false
+      sound33 = false
+      sound44 = false
+      sound55 = false
+      sound66 = false
+      sound77 = false
+      sound88 = false
     end
   end
 end
@@ -205,12 +205,12 @@ function musora_handle()
       while obideli do wait(1000) end
       wait(2000)
     end
-	if sound33 then
+    if sound33 then
       sound3 = true
       while sound33 do wait(1000) end
       wait(2000)
     end
-	if sound44 then
+    if sound44 then
       sound4 = true
       while sound44 do wait(1000) end
       wait(2000)
@@ -220,17 +220,17 @@ function musora_handle()
       while sound55 do wait(1000) end
       wait(2000)
     end
-	if sound66 then
+    if sound66 then
       sound6 = true
       while sound66 do wait(1000) end
       wait(2000)
     end
-	if sound77 then
+    if sound77 then
       sound7 = true
       while sound77 do wait(1000) end
       wait(2000)
     end
-	if sound88 then
+    if sound88 then
       sound8 = true
       while sound88 do wait(1000) end
       wait(2000)
@@ -315,7 +315,7 @@ function update(php, prefix, url, komanda)
                     end
                   end
                 )
-              end, prefix
+                end, prefix
               )
             else
               update = false
