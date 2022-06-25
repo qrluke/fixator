@@ -1,6 +1,6 @@
 {
-"latest": "31.03.2020",
-"updateurl": "https://raw.githubusercontent.com/qrlk/fixator/master/!fixator.lua",
-"changelog": "https://github.com/qrlk/fixator/blob/master/CHANGELOG.md",
+  "latest": "25.06.2022",
+  "updateurl": "https://raw.githubusercontent.com/qrlk/fixator/master/!fixator.lua",
+  "changelog": "https://github.com/qrlk/fixator/blob/master/CHANGELOG.md",
   "telemetry": "http://qrlk.me/dev/moonloader/fixator/stats.php"
 }

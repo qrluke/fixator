@@ -1,7 +1,7 @@
 require 'lib.moonloader'
 
 script_name('fixator')
-script_version("31.03.2020")
+script_version("25.06.2022")
 script_author("qrlk")
 script_url("https://github.com/qrlk/fixator")
 script_description("Воспроизводит звук, когда в зоне прорисовки появляются игроки со скинами из списка.")
